@@ -4,7 +4,7 @@ export default function DiagnosticoMiPyme(){
     return (
         <div>
           
-          <div className="relative bg-[url(/mipyme.png)] bg-center text-center p-30 bg-no-repeat bg-cover h-225">
+          <div className="relative bg-[url(/mipyme.png)] bg-center text-center p-30 bg-no-repeat bg-cover h-200">
             {/* div para oscurecer el fondo */}
             <div className="absolute inset-0 bg-black/45" />
             

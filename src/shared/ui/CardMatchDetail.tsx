@@ -9,6 +9,7 @@ type MatchingProps = {
 };
 
 export default function CardMatchDetail(item:MatchingProps){
+  
   return (
     <div className={`bg-(--primaryMid)${item.index%2 == 0 ? `/60` : `/80`} rounded-xl shadow-md border-2 border-purple-400 p-4 w-[500px] h-full flex flex-col justify-between`}>
       <div className="relative flex h-100 w-full">

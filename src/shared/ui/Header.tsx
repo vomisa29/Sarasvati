@@ -4,7 +4,7 @@ import Image from 'next/image'; // Imports Image from Next.js
 export default function Header(){
   return (
     <div className="relative bg-white border-2 border-b-gray-200 h-24 flex justify-start">
-       <Link href="/" className="relative h-20 w-55 ml-20 mt-2 mb-2">
+       <Link href="/" className="relative h-17 w-55 ml-20 mt-3 mb-2">
          <Image
            src="/logoHeader.png"
            alt="App's logo"
