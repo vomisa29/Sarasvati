@@ -15,9 +15,9 @@ export default function MatchingPage({ data, tipo, Id }: MatchingProps){
     let i = 0;
     while (i<3){
       if (i%2 == 1){
-        classArr[i] = "row-span-3";
+        classArr[i] = "row-span-3 max-w-min";
       }else{
-        classArr[i] = "row-start-2 row-end-4";
+        classArr[i] = "row-start-2 row-end-4 max-w-min";
       }
       i++;
     }
