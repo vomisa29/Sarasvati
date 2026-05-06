@@ -4,7 +4,7 @@ export default function DiagnosticoCreativo(){
     return (
         <div>
           
-          <div className="relative bg-[url(/creativo.png)] bg-center text-center p-20 bg-no-repeat bg-cover h-200">
+          <div className="relative bg-[url(/creativo.png)] bg-center text-center p-20 bg-no-repeat bg-cover h-180">
             {/* div para oscurecer el fondo */}
             <div className="absolute inset-0 bg-black/45" />
             
