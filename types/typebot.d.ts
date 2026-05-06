@@ -1,1 +1,5 @@
-declare module '@typebot.io/react';
+declare module '@typebot.io/react' {
+  import { FC } from 'react';
+
+  export const Standard: FC<any>;
+}

@@ -22,7 +22,7 @@ export interface MipymeEjemplo {
 }
 
 
-const base_url = `http://127.0.0.1:8000`
+const base_url = `https://sarasvatiback-1.onrender.com`
 
 // Simulated fetching function that will be in another file in the future.
 // We export the function so that it can be called from our hooks or components.
@@ -42,7 +42,7 @@ export async function post_mipyme(mipyme:MipymeEjemplo){
     body: JSON.stringify(mipyme),
   });
   const result = await response.json();
-  console.log(result);
+  
   return result
 }
 
