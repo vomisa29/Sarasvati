@@ -1,6 +1,7 @@
 export interface cardInfo {
   alias:string,
-  areas_principales:string[]
+  areas_principales:string[],
+  Id:string,
 }
 
 export interface MipymeEjemplo {
