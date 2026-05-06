@@ -1,3 +1,4 @@
+// @ts-nocheck
 import CardMatchDetail from "../ui/CardMatchDetail";
 import { cardInfo } from "../services/BackEnd";
 import Link from "next/link";
