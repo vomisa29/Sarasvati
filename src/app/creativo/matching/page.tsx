@@ -16,7 +16,7 @@ export default function MatchingCreativoPage(id_mipyme:string) {
 
     return (
         <div>
-            <MatchingPage data={diagnosticos} tipo="Creativo" Id={id_mipyme}/>
+            <MatchingPage data={diagnosticos}  Id={id_mipyme} infoMipyme={{}}/>
         </div>
     )
 }
