@@ -3,21 +3,26 @@ import CardMatchDetail from "../ui/CardMatchDetail";
 import { cardInfo } from "../services/BackEnd";
 import Link from "next/link";
 
+import HeaderResultado from "../ui/HeaderResultado";
+
 type MatchingProps = {
   data: cardInfo[];
-  tipo: string;
   Id: string;
+  infoMipyme:object
 };
 
-export default function MatchingPage({ data, tipo, Id }: MatchingProps){
+export default function MatchingPage({ data, Id , infoMipyme}: MatchingProps){
+    console.log("infoMipyme")
+    console.log(infoMipyme);
+
     const classArr:string[] = [];
 
     let i = 0;
     while (i<3){
       if (i%2 == 1){
-        classArr[i] = "row-span-3 max-w-min";
+        classArr[i] = "relative bg-white rounded-2xl p-7 flex flex-col items-center text-center transition-shadow hover:shadow-lg row-span-3 max-w-min border-2 border-purple-600 shadow-md";
       }else{
-        classArr[i] = "row-start-2 row-end-4 max-w-min";
+        classArr[i] = "relative bg-white rounded-2xl p-7 flex flex-col items-center text-center transition-shadow hover:shadow-lg row-start-2 row-end-4 max-w-min border border-gray-300";
       }
       i++;
     }
@@ -42,32 +47,31 @@ export default function MatchingPage({ data, tipo, Id }: MatchingProps){
 
 
     return (
-    <div className="relative bg-white min-h-screen">
+    <div className="relative bg-indigo-50 min-h-screen">
 
-      <div className="pt-6 pb-6 mb-8">
-        <h1 className="text-4xl text-center text-black font-bold font-[poppins] ml-10 mr-10">
-          Hola {tipo}, estas son las recomendaciones que tenemos para ti
-        </h1>
-      </div>
+      <div className="pt-6 pb-6 mb-8 ml-30 mr-30">
+        <HeaderResultado/>
+        
 
-      <div className="flex grid grid-flow-col grid-rows-1 justify-center gap-15 pb-4">
-        {lista_ordenada.map((item,index) => (
-            <div key={index} className={classArr[index]}>
-                <CardMatchDetail index={index}  alias={item[0].alias} areas={item[0].areas_principales} costo={item[1]} id_mipyme={Id}/>
-            </div>
-          ))}
-      </div>
-    
-      <div className="flex justify-center">
-          <Link href="">
-                  <button
-              className={`px-10 py-4 text-white font-poppins fonts text-lg rounded-lg shadow-lg
-              bg-(--primary)
-              hover:scale-105 transition content-center`}
-          >
-            Terminar
-      </button>
-          </Link>
+        <div className="flex grid grid-flow-col grid-rows-1 justify-center gap-15 pb-4">
+          {lista_ordenada.map((item,index) => (
+              <div key={index} className={classArr[index]}>
+                  <CardMatchDetail index={index}  alias={item[0].alias} areas={item[0].areas_principales} costo={item[1]} id_mipyme={Id} presupuesto={item[0].presupuesto}/>
+              </div>
+            ))}
+        </div>
+      
+        <div className="flex justify-center">
+            <Link href="">
+                    <button
+                className={`px-10 py-4 text-white font-poppins fonts text-lg rounded-lg shadow-lg
+                bg-(--primary)
+                hover:scale-105 transition content-center`}
+            >
+              Terminar
+        </button>
+            </Link>
+        </div>
       </div>
 
     </div>

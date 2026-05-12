@@ -1,15 +1,22 @@
+"use client";
+
 import BriefPageHandler from "@/shared/pages/briefPageHandler";
+import { useParams, useSearchParams } from "next/navigation";
 
-export default async function BriefPage({
+export default function BriefPage(){
 
-    params,
-  }: {
-    params: { mipymeID: string };
-  }) {
-  const { mipymeID } = await params;
+  const params = useParams();
+
+  const searchParams = useSearchParams();
+
+  const data = searchParams.get("data");
+
+  const dataMipyme = data
+    ? JSON.parse(decodeURIComponent(data))
+    : null;
 
   return (
-    <BriefPageHandler id_mipyme={mipymeID}/>
+    <BriefPageHandler id_mipyme={params.mipymeID} data={dataMipyme}/>
   )
 }
 

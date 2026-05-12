@@ -41,7 +41,7 @@ export default function Hero(){
           {/*Right Side*/}
           <div className="flex justify-center">
 
-            <div className="relative h-200 w-200 mr-40">
+            <div className="relative h-150 w-150 mr-40 mt-20">
                 <Image
                     src="/mainpage.gif"
                     alt="App's logo"

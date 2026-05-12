@@ -92,17 +92,19 @@ export default function DiagnosticFormPage({ steps }: DiagnosticProps) {
       window.scrollTo(0, 0);
     } else {
       
-      console.log(answers);
       //modificar objeto answers al formato de la base de datos
       const data = arreglar_mipyme(answers);
       
       const Id = await postMipyme(data);
-      console.log(Id);
-      router.push(`/MiPyme/brief/${Id}`);
+
+      const dataJSON = encodeURIComponent(
+        JSON.stringify(data)
+      );
+      
+      router.push(`/MiPyme/diagnostico/resultado/${Id}?data=${dataJSON}`)
     }
 
     } catch (error) {
-      console.error(error);
       alert(error.issues[0]["message"]);
     }
   };

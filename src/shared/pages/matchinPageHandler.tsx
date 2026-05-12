@@ -5,7 +5,8 @@ import { useFetchResultadoDiagnostico } from "@/shared/hooks/useFetchResultadoDi
 import Image from "next/image";
 
 type props = {
-    id_mipyme:string
+    id_mipyme:string,
+    data:object
 }
 
 export default function MatchingPageHandler(item:props){
@@ -34,7 +35,7 @@ export default function MatchingPageHandler(item:props){
 
     return (
         <div>
-            <MatchingPage data={diagnosticos} tipo="MiPyme" Id={item.id_mipyme}/>
+            <MatchingPage data={diagnosticos} Id={item.id_mipyme} infoMipyme={item.data}/>
         </div>
     )
 }

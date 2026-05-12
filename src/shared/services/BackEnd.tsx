@@ -32,8 +32,10 @@ export async function fetchResultadoDiagnostico(id_mipyme:string){
   return data_modelo
 }
 
+
+// export async function fetchMipyme
+
 export async function post_mipyme(mipyme:MipymeEjemplo){
-  console.log(mipyme);
   const response = await fetch(base_url + `/mipymes/`,{
     method: "POST",
     headers:{
@@ -42,7 +44,7 @@ export async function post_mipyme(mipyme:MipymeEjemplo){
     body: JSON.stringify(mipyme),
   });
   const result = await response.json();
-  
+
   return result
 }
 
