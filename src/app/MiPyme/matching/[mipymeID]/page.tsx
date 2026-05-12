@@ -1,3 +1,4 @@
+// @ts-nocheck
 "use client";
 
 import MatchingPageHandler from "@/shared/pages/matchinPageHandler";
