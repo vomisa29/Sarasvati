@@ -23,7 +23,7 @@ export default function BriefPageHandler(item:props){
     return (
      <div className="min-h-screen bg-gray-50 font-['Poppins'] flex flex-col">
         <div className="flex flex-1 max-w-6xl mx-auto w-full p-6 gap-6">
-            <SidebarBrief empresa={data.Empresa} sector={data.Sector} necesidad={data["Apoyo creativo"]}/>
+            <SidebarBrief empresa={data.Empresa} sector={data.Sector} necesidad={data["Apoyo creativo"][0]}/>
 
             <SideChatbot id_mipyme={Id} data={data}/>
         </div>
