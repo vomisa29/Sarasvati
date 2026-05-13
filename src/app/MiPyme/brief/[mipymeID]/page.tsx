@@ -16,6 +16,8 @@ export default function BriefPage(){
     ? JSON.parse(decodeURIComponent(data))
     : null;
 
+  console.log(dataMipyme);
+
   return (
     <BriefPageHandler id_mipyme={params.mipymeID} data={dataMipyme}/>
   )

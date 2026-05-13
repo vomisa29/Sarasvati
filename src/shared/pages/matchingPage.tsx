@@ -50,7 +50,7 @@ export default function MatchingPage({ data, Id , infoMipyme}: MatchingProps){
     <div className="relative bg-indigo-50 min-h-screen">
 
       <div className="pt-6 pb-6 mb-8 ml-30 mr-30">
-        <HeaderResultado/>
+        <HeaderResultado objetivo={infoMipyme.Objetivo[0]} empresa={infoMipyme.Empresa}/>
         
 
         <div className="flex grid grid-flow-col grid-rows-1 justify-center gap-15 pb-4">

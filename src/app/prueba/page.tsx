@@ -1,202 +1,152 @@
-export default function MatchResults() {
-  
-  // ─── DATOS DE EJEMPLO (reemplazar con datos reales del algoritmo) ───
-  const defaultMatches = [
-    {
-      id: "C01",
-      name: "Valentina Restrepo",
-      role: "Content Creator & Fotógrafa",
-      initials: "VR",
-      matchPercent: 94,
-      skills: ["Fotografía gastronómica", "Reels", "Stories"],
-      price: "$800K - $1.2M",
-      rating: 4.8,
-      projects: 23,
-      available: true,
-      isBest: true,
-      matchReasons: [
-        "Experiencia directa en tu sector",
-        "Estilo visual afín a lo que buscas",
-        "Dentro de tu rango de presupuesto",
-        "Disponible para empezar ya"
-      ]
-    },
-    {
-      id: "C02",
-      name: "Santiago Méndez",
-      role: "Diseñador Gráfico & Social Media",
-      initials: "SM",
-      matchPercent: 87,
-      skills: ["Diseño de posts", "Branding", "Motion graphics"],
-      price: "$600K - $900K",
-      rating: 4.6,
-      projects: 18,
-      available: true,
-      isBest: false,
-      matchReasons: [
-        "Perfil complementario a tu necesidad",
-        "Experiencia con MiPymes colombianas",
-        "Presupuesto competitivo"
-      ]
-    },
-    {
-      id: "C03",
-      name: "Camila Torres",
-      role: "Estratega de Contenido",
-      initials: "CT",
-      matchPercent: 81,
-      skills: ["Estrategia digital", "Copywriting", "Calendarios"],
-      price: "$1M - $1.5M",
-      rating: 4.9,
-      projects: 31,
-      available: false,
-      isBest: false,
-      matchReasons: [
-        "La mejor valorada de la plataforma",
-        "Experiencia en estrategia para tu sector",
-        "Disponible en 2 semanas"
-      ]
-    }
+// ─────────────────────────────────────────────────────────
+// COMPONENTE: PÁGINA DEL BRIEF ASISTIDO (React + TailwindCSS)
+// Ruta: /MiPyme/brief
+//
+// Es el wrapper visual alrededor del chatbot de Typebot.
+// Sidebar izquierdo con datos del diagnóstico + campos del brief.
+// Área derecha donde se embebe el chatbot.
+//
+// Props:
+//   userName,  diagnosticData, typebotUrl
+//
+// PARA EL INGENIERO:
+// - Reemplazar el contenido del chat area con el embed de Typebot
+//   (ya sea via iframe o Typebot React SDK: @typebot.io/react)
+// - Los datos de diagnosticData vienen del paso anterior
+// ─────────────────────────────────────────────────────────
+
+export default function BriefPage() {
+  const sector = "sector";
+  const necesidad = "necesidad";
+  const subsector = "subsector?";
+
+  const briefFields = [
+    { icon: "🎯", label: "Necesidad general" },
+    { icon: "🎪", label: "Objetivo del proyecto" },
+    { icon: "📦", label: "Entregables esperados" },
+    { icon: "👥", label: "Público objetivo" },
+    { icon: "🎨", label: "Referencias visuales" },
+    { icon: "📁", label: "Materiales disponibles" },
+    { icon: "⏰", label: "Tiempo / urgencia" },
+    { icon: "💰", label: "Presupuesto" },
+    { icon: "⚠️", label: "Restricciones" },
+    { icon: "🏆", label: "Criterio de éxito" },
   ];
 
-  const profiles = defaultMatches;
-  const brief = { necesidad: "Contenido para redes sociales", sector: "Gastronomía → Restaurante" };
-
   return (
-    <div className="min-h-screen bg-gray-50 font-['Poppins']">
-      <div className="max-w-5xl mx-auto px-6 py-12">
-        
-        {/* Header */}
-        <div className="bg-white border border-gray-200 rounded-2xl p-8 mb-8">
-          <p className="text-sm font-semibold text-purple-600 tracking-wide uppercase mb-2">
-            Resultados para tu proyecto
-          </p>
-          <h1 className="font-['Philosopher'] text-2xl md:text-3xl font-bold text-gray-900 mb-2">
-            {brief.necesidad} — {"Tu empresa"}
-          </h1>
-          <p className="text-gray-500 text-base">
-            {profiles.length} perfiles creativos con alta compatibilidad con tu brief
-          </p>
+    <div className="min-h-screen bg-gray-50 font-['Poppins'] flex flex-col">
+      <div className="flex flex-1 max-w-6xl mx-auto w-full p-6 gap-6">
+
+        {/* ─── SIDEBAR ─── */}
+        <div className="hidden lg:block w-80 flex-shrink-0">
+          <div className="bg-white border border-gray-200 rounded-2xl p-6 sticky top-24">
+            <div className="flex items-center justify-between mb-6">
+              <h3 className="text-lg font-bold text-gray-900">Tu Brief</h3>
+              <span className="text-xs font-bold bg-yellow-400 text-gray-900 px-3 py-1 rounded-full">
+                En construcción
+              </span>
+            </div>
+
+            {/* Datos del diagnóstico */}
+            <div className="bg-purple-50 rounded-xl p-4 mb-6">
+              <p className="text-xs text-purple-600 font-semibold uppercase tracking-wide mb-3">
+                Datos del diagnóstico
+              </p>
+              <div className="space-y-2.5 text-sm">
+                <div className="flex justify-between">
+                  <span className="text-gray-500">Empresa</span>
+                  <span className="text-gray-900 font-medium">{"Empresa"}</span>
+                </div>
+                <div className="flex justify-between">
+                  <span className="text-gray-500">Sector</span>
+                  <span className="text-gray-900 font-medium text-right max-w-[140px]">
+                    {sector}{subsector ? ` → ${subsector}` : ""}
+                  </span>
+                </div>
+                <div className="flex justify-between">
+                  <span className="text-gray-500">Necesidad</span>
+                  <span className="text-gray-900 font-medium text-right max-w-[140px]">{necesidad}</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Campos del brief */}
+            <p className="text-xs text-gray-400 font-semibold uppercase tracking-wide mb-3">
+              Campos del brief
+            </p>
+            <div className="space-y-3">
+              {briefFields.map((f, i) => (
+                <div key={i} className="flex items-center gap-3">
+                  <span className="text-base">{f.icon}</span>
+                  <span className="text-sm text-gray-500">{f.label}</span>
+                </div>
+              ))}
+            </div>
+
+            <div className="mt-6 pt-5 border-t border-gray-100">
+              <p className="text-xs text-gray-400 leading-relaxed">
+                💡 La IA te irá guiando para completar cada campo. Al terminar, tu brief estará listo para el matching.
+              </p>
+            </div>
+          </div>
         </div>
 
-        {/* 3 Cards horizontales */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-5 mb-8">
-          {profiles.map((p, i) => (
-            <div
-              key={p.id}
-              className={`relative bg-white rounded-2xl p-7 flex flex-col items-center text-center transition-shadow hover:shadow-lg ${
-                p.isBest 
-                  ? "border-2 border-purple-600 shadow-md" 
-                  : "border border-gray-200"
-              }`}
-            >
-              {/* Badge mejor match */}
-              {p.isBest && (
-                <div className="absolute -top-px left-1/2 -translate-x-1/2 bg-yellow-400 text-gray-900 text-[11px] font-bold px-4 py-1 rounded-b-lg tracking-wide">
-                  MEJOR MATCH
+        {/* ─── CHAT AREA ─── */}
+        <div className="flex-1 flex flex-col">
+          {/* Chat header */}
+          <div className="bg-white border border-gray-200 rounded-t-2xl px-6 py-4 flex items-center gap-4">
+            <div className="w-11 h-11 rounded-xl bg-purple-100 flex items-center justify-center">
+              {/* Reemplazar con <img src="/logo.png" className="h-7" /> */}
+              <span className="text-purple-600 font-bold text-lg">S</span>
+            </div>
+            <div>
+              <p className="font-semibold text-gray-900">Asistente de Brief — Sarasvati</p>
+              <p className="text-sm text-green-500">● En línea</p>
+            </div>
+          </div>
+
+          {/* Chat body - AQUÍ VA EL TYPEBOT */}
+          {/* 
+            OPCIÓN A - iframe:
+            <iframe src={typebotUrl} className="w-full flex-1 min-h-[600px] border-0" />
+
+            OPCIÓN B - Typebot SDK (recomendado):
+            import { Standard } from "@typebot.io/react"
+            <Standard typebot="tu-typebot-id" style={{ width: "100%", height: "600px" }} />
+          */}
+          <div className="flex-1 bg-white border-x border-gray-200 min-h-[600px] flex flex-col">
+            {/* Mensaje de ejemplo - reemplazar con Typebot */}
+            <div className="flex-1 p-6 overflow-y-auto">
+              <div className="flex gap-3 mb-4 max-w-[80%]">
+                <div className="w-9 h-9 rounded-xl bg-purple-100 flex items-center justify-center flex-shrink-0">
+                  <span className="text-purple-600 font-bold text-sm">S</span>
                 </div>
-              )}
-
-              {/* Match circle */}
-              <div className={`w-20 h-20 rounded-full flex items-center justify-center mb-4 ${
-                p.isBest ? "mt-3" : ""
-              } ${
-                p.matchPercent >= 90 
-                  ? "border-[3px] border-purple-600" 
-                  : p.matchPercent >= 85 
-                    ? "border-[3px] border-purple-400" 
-                    : "border-[3px] border-gray-300"
-              }`}>
-                <span className={`text-2xl font-bold ${
-                  p.matchPercent >= 90 ? "text-purple-600" : p.matchPercent >= 85 ? "text-purple-400" : "text-gray-500"
-                }`}>
-                  {p.matchPercent}%
-                </span>
+                <div className="bg-gray-50 rounded-[4px_16px_16px_16px] px-4 py-3 text-[15px] text-gray-800 leading-relaxed">
+                  ¡Hola{"-Empresa-"}! Veo que completaste tu diagnóstico para <strong>{"tu negocio"}</strong>. Vamos a construir un brief profesional juntos. Cuéntame, ¿qué necesitas?
+                </div>
               </div>
+            </div>
 
-              {/* Avatar */}
-              <div className={`w-16 h-16 rounded-2xl flex items-center justify-center text-xl font-bold mb-4 ${
-                i === 0 ? "bg-purple-100 text-purple-600" 
-                : i === 1 ? "bg-amber-50 text-amber-600" 
-                : "bg-purple-50 text-purple-500"
-              }`}>
-                {p.initials}
-              </div>
-
-              {/* Info */}
-              <h3 className="text-lg font-bold text-gray-900 mb-1">{p.name}</h3>
-              <p className="text-sm text-gray-500 mb-3">{p.role}</p>
-
-              {/* Disponibilidad */}
-              {p.available ? (
-                <span className="text-xs font-semibold text-green-600 bg-green-50 px-3 py-1 rounded-md mb-4">
-                  Disponible
-                </span>
-              ) : (
-                <span className="text-xs text-gray-400 bg-gray-50 px-3 py-1 rounded-md mb-4">
-                  En 2 semanas
-                </span>
-              )}
-
-              {/* Skills */}
-              <div className="flex flex-wrap gap-1.5 justify-center mb-4">
-                {p.skills.map(s => (
-                  <span key={s} className="bg-gray-50 border border-gray-200 rounded-lg px-2.5 py-1 text-xs text-gray-700">
-                    {s}
-                  </span>
-                ))}
-              </div>
-
-              {/* Stats */}
-              <div className="flex gap-4 text-sm text-gray-400 mb-4">
-                <span>⭐ {p.rating}</span>
-                <span>{p.projects} proy.</span>
-              </div>
-
-              {/* Precio */}
-              <p className="text-base font-bold text-gray-900 mb-5">{p.price}</p>
-
-              {/* CTA */}
-              <button
-                // onClick={() => onViewProfile?.(p.id)}
-                className={`w-full py-3 px-5 rounded-xl text-sm font-semibold transition-colors ${
-                  p.isBest
-                    ? "bg-purple-600 text-white hover:bg-purple-700"
-                    : "bg-white text-purple-600 border-2 border-purple-600 hover:bg-purple-50"
-                }`}
-              >
-                Ver perfil
+            {/* Input area */}
+            <div className="border-t border-gray-200 px-6 py-4 flex gap-3 items-center">
+              <button className="w-11 h-11 rounded-xl border border-gray-200 flex items-center justify-center text-gray-400 hover:bg-gray-50 flex-shrink-0">
+                📎
+              </button>
+              <input
+                type="text"
+                placeholder="Escribe tu respuesta..."
+                className="flex-1 border border-gray-200 rounded-xl px-4 py-3 text-[15px] focus:border-purple-500 focus:outline-none"
+              />
+              <button className="w-11 h-11 rounded-xl bg-purple-600 text-white flex items-center justify-center hover:bg-purple-700 flex-shrink-0">
+                →
               </button>
             </div>
-          ))}
-        </div>
+          </div>
 
-        {/* Transparencia del matching */}
-        <div className="bg-white border border-gray-200 rounded-2xl p-7">
-          <h3 className="font-semibold text-gray-900 text-base mb-4">¿Por qué estos perfiles?</h3>
-          <p className="text-gray-500 text-sm leading-relaxed mb-5">
-            Nuestro algoritmo analizó tu brief y cruzó tu necesidad, sector, estilo visual, presupuesto y plazo con los perfiles de nuestra base de creativos verificados. Cada porcentaje refleja qué tan bien se alinea ese creativo con lo que necesitas.
-          </p>
-          
-          {/* Razones por perfil */}
-          <div className="space-y-4">
-            {profiles.map(p => (
-              <div key={p.id} className="flex items-start gap-4 p-4 bg-gray-50 rounded-xl">
-                <div className={`w-10 h-10 rounded-lg flex items-center justify-center text-sm font-bold flex-shrink-0 ${
-                  p.isBest ? "bg-purple-100 text-purple-600" : "bg-gray-100 text-gray-500"
-                }`}>
-                  {p.matchPercent}%
-                </div>
-                <div>
-                  <p className="font-semibold text-gray-900 text-sm mb-1">{p.name}</p>
-                  <div className="flex flex-wrap gap-x-4 gap-y-1">
-                    {p.matchReasons.map((r, idx) => (
-                      <span key={idx} className="text-xs text-gray-500">✓ {r}</span>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            ))}
+          <div className="bg-white border border-gray-200 rounded-b-2xl px-6 py-3 text-center">
+            <p className="text-xs text-gray-400">
+              Powered by Sarasvati · Tu información es confidencial
+            </p>
           </div>
         </div>
       </div>
