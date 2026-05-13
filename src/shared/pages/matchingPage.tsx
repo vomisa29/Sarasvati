@@ -63,13 +63,13 @@ export default function MatchingPage({ data, Id , infoMipyme}: MatchingProps){
       
         <div className="flex justify-center">
             <Link href="">
-                    <button
+              <button
                 className={`px-10 py-4 text-white font-poppins fonts text-lg rounded-lg shadow-lg
                 bg-(--primary)
                 hover:scale-105 transition content-center`}
-            >
-              Terminar
-        </button>
+              >
+                Responder encuesta
+              </button>
             </Link>
         </div>
       </div>
