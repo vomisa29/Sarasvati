@@ -15,7 +15,6 @@ export default function InfoDetail(){
                 </div>
               ))}
             </div>
-            <button style={{ border: "none", borderRadius: 12, padding: "16px 28px", fontSize: 16, fontWeight: 600, cursor: "pointer", width: "100%"}}>{card.cta}</button>
           </div>
         ))}
       </div>        

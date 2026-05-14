@@ -14,10 +14,10 @@ export default function MatchingPageHandler(item:props){
   const { diagnosticos, isLoading, error } = useFetchResultadoDiagnostico(item.id_mipyme);
 
   if (isLoading) {
-    return <div className="flex justify-center bg-gray-500 bg-[radial-gradient(#ffffff33_1px,transparent_1px)] [background-size:20px_20px] min-h-screen relative text-center p-8">
+    return <div className="flex justify-center bg-slate-300 bg-[radial-gradient(#ffffff33_1px,transparent_1px)] [background-size:20px_20px] min-h-screen relative text-center p-8">
         
-        <div className="relative h-200 w-200">
-          <p className="pb-10">Calculo Matching...</p>
+        <div className="relative h-full w-200">
+          <p className="text-gray-800 pb-10">Calculo Matching...</p>
           <Image
             className="mx-auto"
             src="/loading.gif"
