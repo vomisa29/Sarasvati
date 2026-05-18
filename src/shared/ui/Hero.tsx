@@ -5,7 +5,7 @@ export default function Hero(){
     return (
         <div className="flex justify-evenly pl-40 pr-80">
           {/* Left Side */}
-          <div className="flex flex-col h-full w-full pt-30 pb-40 pl-40 pr-40">
+          <div className="flex flex-col h-full w-full pt-30 pb-40 pl-10 pr-40">
             
             <div className="bg-(--primary) p-2 rounded-xl mb-10 h-full w-120 text-center">
               <span className="text-lg font-[poppins] font-semibold text-white uppercase">
