@@ -3,7 +3,7 @@ import Image from "next/image";
 
 export default function Hero(){
     return (
-        <div className="flex justify-evenly pl-50 pr-50">
+        <div className="flex justify-evenly pl-40 pr-80">
           {/* Left Side */}
           <div className="flex flex-col h-full w-full pt-30 pb-40 pl-40 pr-40">
             
