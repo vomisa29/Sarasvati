@@ -5,7 +5,7 @@ import { Creativo, post_creativo } from "@/shared/services/BackEnd";
 
 
 export function usePostCreativo(creativo: Creativo) {
-    const [Id, setId] = useState<string>();
+    const [Id, setId] = useState<string>("");
     const [isLoading, setIsLoading] = useState<boolean>(true);
     const [error, setError] = useState<string | null>(null);
   
