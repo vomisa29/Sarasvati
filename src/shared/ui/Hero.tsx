@@ -14,7 +14,7 @@ export default function Hero(){
             </div>
 
             <h1 className="text-[56px] font-[philosopher] font-semibold text-black leading-none w-full mb-10">
-              Logramos que la colaboración creativa funcione <span className="text-(--primary)">desde el primer dia.</span>
+              Logramos que la colaboración creativa funcione <span className="text-(--primary)">desde el primer día.</span>
             </h1>
 
             <p className="text-[20px] font-[poppins] text-(--textSec) mb-15">

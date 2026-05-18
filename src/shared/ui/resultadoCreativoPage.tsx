@@ -1,31 +1,13 @@
 // @ts-nocheck
-"use client";
-
-import { useParams, useSearchParams } from "next/navigation";
 import { useRouter } from "next/navigation";
 
-export default function ResultadoDiagnosticoPage(){
+type props = {
+    creativoID:string,
+    answers:object
+}
 
-  const params = useParams();
-
-  const searchParams = useSearchParams();
-
-  const data = searchParams.get("data");
-
-  const answers = data
-    ? JSON.parse(decodeURIComponent(data))
-    : null;
-
-  console.log("params");
-  console.log(params.mipymeID);
-
-  console.log("answers");
-  console.log(answers);
-
-  
-
-
-  const LEVELS = [
+export default function ResultadoCreativoPage({creativoID, answers}:props){
+    const LEVELS = [
   { level:1, name:"Semilla", emoji:"\u{1F331}",
     headline:"Tu negocio está empezando su camino digital",
     analysis:"Todavía no tienes presencia digital clara ni has trabajado con creativos. Eso está perfecto — todos empiezan por aquí. Lo importante es que estás dando el primer paso. El brief asistido va a ser tu mejor aliado porque te guía desde cero.",
@@ -95,11 +77,8 @@ export default function ResultadoDiagnosticoPage(){
   const router = useRouter();
 
   function onContinue(){
-    const dataJSON = encodeURIComponent(
-        JSON.stringify(answers)
-      );
-
-    router.push(`/MiPyme/brief/${params.mipymeID}?data=${dataJSON}`)
+    console.log("end");
+    console.log(creativoID);
   }
   const lvlIdx = calcLevel(answers);
   const lvl = LEVELS[lvlIdx];
@@ -113,14 +92,14 @@ export default function ResultadoDiagnosticoPage(){
           {[1,2,3,4].map(i => <div key={i} className="flex-1 h-1.5 rounded-full bg-purple-600" />)}
         </div>
         <div className="text-center mb-10">
-          <div className="inline-block bg-green-100 text-green-700 text-xs font-semibold px-4 py-1.5 rounded-full mb-4">✓ DIAGNÓSTICO COMPLETADO</div>
+          <div className="inline-block bg-green-100 text-green-700 text-xs font-semibold px-4 py-1.5 rounded-full mb-4"> FORMULARIO COMPLETADO</div>
           <h1 className="font-['Philosopher'] text-3xl font-bold text-gray-900 mb-2">
-            {`${answers.Empresa}, estos son tus resultados`}
+            {`${answers["Alias"]}, gracias por tu apoyo!`}
           </h1>
-          <p className="text-gray-500">Análisis de madurez digital de <span className="font-semibold text-gray-700">{answers.Empresa || "tu negocio"}</span></p>
+          <p className="text-gray-500">Fin del Formulario.</p>
         </div>
 
-        {/* Nivel de madurez */}
+        {/* Nivel de madurez
         <div className={`${sty.bg} ${sty.border} border rounded-2xl p-8 mb-6`}>
           <div className="flex items-center gap-4 mb-6">
             <span className="text-5xl">{lvl.emoji}</span>
@@ -130,7 +109,7 @@ export default function ResultadoDiagnosticoPage(){
             </div>
           </div>
 
-          {/* Barra */}
+           Barra 
           <div className="mb-6">
             <div className="flex justify-between text-xs text-gray-400 mb-2">
               <span>Semilla</span><span>Madurez</span>
@@ -149,24 +128,23 @@ export default function ResultadoDiagnosticoPage(){
             <p className="text-sm font-semibold text-gray-700 mb-1">💡 Nuestra recomendación</p>
             <p className="text-sm text-gray-600 leading-relaxed">{lvl.rec}</p>
           </div>
-        </div>
+        </div> */}
 
-        {/* Siguiente paso */}
+        {/* Que sigue? */}
         <div className="bg-white border border-gray-200 rounded-2xl p-7 mb-8">
-          <h3 className="font-semibold text-gray-900 mb-5">Tu siguiente paso</h3>
+          <h3 className="font-semibold text-gray-900 mb-5">¿Que sigue?</h3>
           <div className="flex items-start gap-4 p-4 bg-purple-50 rounded-xl">
-            <div className="w-12 h-12 rounded-xl bg-purple-600 flex items-center justify-center text-white text-xl flex-shrink-0">💬</div>
+            <div className="w-12 h-12 rounded-xl bg-purple-600 flex items-center justify-center text-white text-xl flex-shrink-0">?</div>
             <div>
-              <p className="font-semibold text-gray-900">Brief asistido con IA</p>
-              <p className="text-gray-500 text-sm mt-1">Nuestra IA te guiará en una conversación para construir un brief profesional. Con un buen brief, el creativo entiende exactamente qué necesitas y el resultado es radicalmente mejor.</p>
+              <p className="font-semibold text-gray-900">Tu perfil ha quedado guardado</p>
+              <p className="text-gray-500 text-sm mt-1">El formulario que acabas de responder va a servir de insumo para nuestro sistema. Esperamos que no haya sido una molestia y te deseamos un buen dia.</p>
             </div>
           </div>
         </div>
 
         <button onClick={onContinue} className="w-full bg-purple-600 hover:bg-purple-700 text-white font-semibold py-4 px-8 rounded-xl text-lg transition-colors">
-          Continuar al Brief Asistido →
+          Finalizar
         </button>
-        <p className="text-center text-gray-400 text-sm mt-4">Toma 5-8 minutos y marca toda la diferencia</p>
       </div>
     </div>
   );

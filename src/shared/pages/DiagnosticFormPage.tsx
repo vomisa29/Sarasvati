@@ -8,7 +8,8 @@ import { DiagnosticSchema } from "./schemas/diagnostic.schema";
 import { AnswersWithRulesSchema } from "./schemas/diagnostic.schema";
 import { SetDiagnostic } from "./schemas/diagnostic.schema";
 
-import { postMipyme } from "../hooks/usePostMipyme";
+// import { postMipyme } from "../hooks/usePostMipyme";
+// import { postCreativo } from "../hooks/usePostCreativo";
 
 interface DiagnosticProps {
     steps: {
@@ -22,11 +23,11 @@ interface DiagnosticProps {
             multi?:boolean,
         }[];
     }[];
-    backTo:string;
+    tipo:string;
 }
 
 
-export default function DiagnosticFormPage({ steps }: DiagnosticProps) {
+export default function DiagnosticFormPage({ steps, tipo }: DiagnosticProps) {
   
   DiagnosticSchema.parse(steps);
   SetDiagnostic(steps);
@@ -76,7 +77,12 @@ export default function DiagnosticFormPage({ steps }: DiagnosticProps) {
 
   const clickAnterior = () => {
     if (step === 0){
-      router.push("/MiPyme/diagnostico");
+      if (tipo === "mipyme"){
+        router.push("/MiPyme/diagnostico");
+      }else{
+        router.push("/creativo/diagnostico");
+      }
+      
     }else{
         setStep(step - 1);
         window.scrollTo(0, 0);
@@ -92,16 +98,26 @@ export default function DiagnosticFormPage({ steps }: DiagnosticProps) {
       window.scrollTo(0, 0);
     } else {
       
-      //modificar objeto answers al formato de la base de datos
-      const data = arreglar_mipyme(answers);
-      
-      const Id = await postMipyme(data);
+      if (tipo === "mipyme"){
+        //modificar objeto answers al formato de la base de datos
+        const data = arreglar_mipyme(answers);
 
-      const dataJSON = encodeURIComponent(
-        JSON.stringify(data)
-      );
-      
-      router.push(`/MiPyme/diagnostico/resultado/${Id}?data=${dataJSON}`)
+        const dataJSON = encodeURIComponent(
+          JSON.stringify(data)
+        );
+
+        router.push(`/MiPyme/diagnostico/resultado?data=${dataJSON}`)
+      }else{
+
+        const data = arreglar_creativo(answers);
+
+        const dataJSON = encodeURIComponent(
+          JSON.stringify(data)
+        );
+
+        router.push(`/creativo/diagnostico/resultado?data=${dataJSON}`)
+      }
+
     }
 
     } catch (error) {
@@ -130,6 +146,26 @@ export default function DiagnosticFormPage({ steps }: DiagnosticProps) {
       "Presupuesto":presupuesto,
       "Sector":answers["0-2"][0],
       "Top 3 al elegir":answers["3-1"]
+    }
+  }
+
+  function arreglar_creativo(answers:object){
+    return {
+      "% >2 ajustes":answers["1-2"][0],
+      "Alias":answers["0-0"],
+      "Area principal":answers["0-1"][0],
+      "Años exp":answers["0-2"][0],
+      "Claridad briefs":answers["1-0"][0],
+      "Criterios para aceptar":answers["2-0"],
+      "Experiencia con Mipymes":answers["0-3"][0],
+      "Fricciones frecuentes":answers["1-1"],
+      "Herramientas":answers["2-4"],
+      "Modalidad":answers["2-3"][0],
+      "Portafolio":answers["3-0"],
+      "Proyectos simultáneos":answers["2-2"][0],
+      "Que espera de Sarasvati":answers["3-1"],
+      "Rango precio":answers["2-1"][0],
+      "Sectores con experiencia":answers["0-4"]
     }
   }
   return (

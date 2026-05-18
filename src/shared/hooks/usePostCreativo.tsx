@@ -1,12 +1,11 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { Mipyme, post_mipyme } from "@/shared/services/BackEnd";
+import { Creativo, post_creativo } from "@/shared/services/BackEnd";
 
 
-export function usePostMipyme(mipyme: Mipyme) {
-  console.log(mipyme);
-    const [Id, setId] = useState<string>("");
+export function usePostCreativo(creativo: Creativo) {
+    const [Id, setId] = useState<string>();
     const [isLoading, setIsLoading] = useState<boolean>(true);
     const [error, setError] = useState<string | null>(null);
   
@@ -16,7 +15,7 @@ export function usePostMipyme(mipyme: Mipyme) {
   
           setIsLoading(true);
           setError(null);
-          const data = await post_mipyme(mipyme);
+          const data = await post_creativo(creativo);
           setId(data);
         } catch (err) {
           if (err instanceof Error) {

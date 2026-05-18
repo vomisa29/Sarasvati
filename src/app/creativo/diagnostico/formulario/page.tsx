@@ -3,6 +3,7 @@ import DiagnosticFormPage from "@/shared/pages/DiagnosticFormPage";
 export default function DiagnosticoCreativo(){
 const dxCreativo = [
   { title: "Tu perfil profesional", sub: "Cuéntanos un poco sobre ti", qs: [
+    { l: "¿Cual es tu nombre creativo?", type: true},
     { l: "¿Cuál es tu área principal de trabajo?", multi: true, o: ["Diseño gráfico","Branding / identidad de marca","Fotografía","Video","Motion graphics","Ilustración","Contenido para redes (Community Management)","Estrategia de marketing / contenido","Copywriting / redacción","Diseño web / UI","Packaging"] },
     { l: "¿Cuántos años de experiencia tienes como freelance o independiente?", o: ["Menos de 1 año","1–3 años","3–5 años","Más de 5 años"] },
     { l: "¿Has trabajado con Micro, pequeñas y medianas empresas colombianas antes?", o: ["Sí, es mi tipo de cliente principal","Sí, entre otros tipos de clientes","Pocas veces","Nunca"] },
@@ -26,6 +27,6 @@ const dxCreativo = [
   ]},
   ];
     return (
-        <DiagnosticFormPage steps={dxCreativo} backTo=""/>
+        <DiagnosticFormPage steps={dxCreativo} tipo="creativo"/>
     )
 }

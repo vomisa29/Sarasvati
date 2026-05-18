@@ -26,6 +26,6 @@ export default function DiagnosticoMiPyme(){
     ]},
     ];
     return (
-        <DiagnosticFormPage steps={dxMipyme} backTo=""/>
+        <DiagnosticFormPage steps={dxMipyme} tipo="mipyme"/>
     )
 }
