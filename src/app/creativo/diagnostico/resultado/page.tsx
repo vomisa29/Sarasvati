@@ -1,5 +1,6 @@
 "use client";
 
+import { Suspense } from "react";
 import ResultadoCreativoPageHandler from "@/shared/pages/resultadoCreativoPageHandler";
 import { useSearchParams } from "next/navigation";
 
@@ -14,6 +15,8 @@ export default function ResultadoCreativoPage(){
     ? JSON.parse(data): null;
 
     return (
-        <ResultadoCreativoPageHandler data={answers}/>
+        <Suspense fallback={<div>Cargando...</div>}>
+            <ResultadoCreativoPageHandler data={answers}/>
+        </Suspense>
     )
 }
