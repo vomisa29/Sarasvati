@@ -1,22 +1,14 @@
 "use client";
 
+export const dynamic = "force-dynamic";
 import { Suspense } from "react";
-import ResultadoCreativoPageHandler from "@/shared/pages/resultadoCreativoPageHandler";
-import { useSearchParams } from "next/navigation";
-
-export default function ResultadoCreativoPage(){
+import ResultadoContentCreativoPage from "./resultadoContent";
 
 
-  const searchParams = useSearchParams();
-
-  const data = searchParams.get("data");
-
-  const answers = data
-    ? JSON.parse(data): null;
-
+export default function ResultadoDiagnosticoPage(){
     return (
-        <Suspense fallback={<div>Cargando...</div>}>
-            <ResultadoCreativoPageHandler data={answers}/>
-        </Suspense>
-    )
+    <Suspense fallback={<div>Cargando...</div>}>
+      <ResultadoContentCreativoPage />
+    </Suspense>
+  );
 }
