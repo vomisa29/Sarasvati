@@ -11,6 +11,8 @@ type props = {
 }
 
 export default function SideChatbot(item:props){
+    console.log("data")
+    console.log(item.data)
 
     const router = useRouter();
 

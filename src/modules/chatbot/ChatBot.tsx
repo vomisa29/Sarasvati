@@ -11,10 +11,7 @@ type props = {
 
 export default function ChatBot(item:props){
   const data = item.data;
-  console.log("ChatBot");
-  console.log(data);
-
-
+  
   return (
     <Standard
       typebot="chatbot-sarasvati-f5qagdx"

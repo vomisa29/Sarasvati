@@ -19,7 +19,9 @@ export default function CardMatchDetail(item:MatchingProps){
   
   const iniciales = obtenerIniciales(item.alias);
 
+  console.log(item);
   return (
+    
     <div className="p-4 w-60 h-100 flex flex-col justify-center items-center">
       {/* <div className="relative flex h-70 w-70 w-full">
         <Image

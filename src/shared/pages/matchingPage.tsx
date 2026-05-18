@@ -44,6 +44,8 @@ export default function MatchingPage({ data, Id , infoMipyme}: MatchingProps){
       data["Respuesta Modelo"][2],
     ];
 
+    console.log(lista_ordenada);
+
 
 
     return (

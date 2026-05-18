@@ -153,7 +153,7 @@ export default function DiagnosticFormPage({ steps, tipo }: DiagnosticProps) {
     return {
       "% >2 ajustes":answers["1-2"][0],
       "Alias":answers["0-0"],
-      "Area principal":answers["0-1"][0],
+      "Area principal":answers["0-1"],
       "Años exp":answers["0-2"][0],
       "Claridad briefs":answers["1-0"][0],
       "Criterios para aceptar":answers["2-0"],
