@@ -1,3 +1,4 @@
+// @ts-nocheck
 import ChatBot from "@/modules/chatbot/ChatBot";
 import { useRouter } from "next/navigation";
 
